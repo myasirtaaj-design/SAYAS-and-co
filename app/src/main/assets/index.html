@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b3d2e">
+<title>Job Buddy</title>
+<style>
+:root{--green:#0b3d2e;--green2:#135c46;--gold:#c9a24b;--cream:#f7f3ea;--ink:#17201d;--muted:#69736f;--line:#d9dfdc;--danger:#a52a2a;--blue:#315a88;--shadow:0 8px 24px rgba(11,61,46,.10)}
+*{box-sizing:border-box}html,body{margin:0;background:#eef2ef;color:var(--ink);font-family:Arial,Helvetica,sans-serif}body{padding-bottom:84px}.app{max-width:760px;margin:auto;min-height:100vh;background:#f7f9f8}.top{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:18px 18px 16px;box-shadow:var(--shadow)}.top h1{margin:0;font-size:22px}.top p{margin:5px 0 0;color:#dceae5;font-size:13px}.page{display:none;padding:16px}.page.active{display:block}.hero{background:linear-gradient(145deg,#fff,var(--cream));border:1px solid #e6dfcf;border-radius:18px;padding:18px;box-shadow:var(--shadow);margin-bottom:14px}.status{display:flex;align-items:center;justify-content:space-between;gap:12px}.badge,.pill{padding:7px 11px;border-radius:999px;background:#e8f2ee;color:var(--green);font-weight:700;font-size:12px}.badge.live{background:#e7f7ed;color:#126b34}.pill.warn{background:#fff3d4;color:#7a5300}.pill.danger{background:#fde8e8;color:#8d2424}.pill.paid{background:#e6f6eb;color:#176535}.timer{font-size:34px;font-weight:800;margin:18px 0 6px;letter-spacing:1px}.sub{font-size:13px;color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:0 4px 14px rgba(0,0,0,.04)}.card .k{font-size:12px;color:var(--muted)}.card .v{font-size:21px;font-weight:800;margin-top:5px}.btn{border:0;border-radius:13px;padding:13px 15px;font-weight:800;font-size:15px;cursor:pointer}.btn.primary{background:var(--green);color:white}.btn.gold{background:var(--gold);color:#221b0c}.btn.blue{background:var(--blue);color:white}.btn.outline{background:white;color:var(--green);border:1px solid var(--green)}.btn.danger{background:#fff0f0;color:var(--danger);border:1px solid #eccaca}.btn.full{width:100%}.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.btnrow .btn{flex:1;min-width:125px}.clockbtn{width:100%;font-size:19px;padding:17px;margin-top:16px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:20px 0 10px}.section-title h2{font-size:17px;margin:0}.list{display:flex;flex-direction:column;gap:10px}.shift,.employer,.money-entry,.reminder-entry{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:0 4px 12px rgba(0,0,0,.04)}.shifthead,.employerhead,.entryhead{display:flex;justify-content:space-between;gap:10px}.shift h3,.employer h3,.money-entry h3,.reminder-entry h3{margin:0 0 4px;font-size:15px}.money{font-weight:800;color:var(--green)}.money.negative{color:var(--danger)}.meta{font-size:12px;color:var(--muted);line-height:1.6}.actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.mini{border:1px solid var(--line);background:#f8faf9;border-radius:9px;padding:7px 10px;font-weight:700;font-size:12px}.empty{text-align:center;padding:28px 14px;color:var(--muted);background:#fff;border:1px dashed #c7cfcb;border-radius:14px}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:13px}.panel h2,.panel h3{margin-top:0}.field{margin-bottom:12px}.field label{display:block;font-size:12px;font-weight:700;color:#4b5752;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #cbd3cf;border-radius:11px;background:white;font-size:15px;color:var(--ink)}.field textarea{min-height:70px;resize:vertical}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:10px}.threecol{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.52);display:none;align-items:flex-end;z-index:100}.modal.open{display:flex}.sheet{background:#f7f9f8;width:100%;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;padding:18px;box-shadow:0 -10px 35px rgba(0,0,0,.2)}.sheet h2{margin:0 0 15px}.nav{position:fixed;bottom:0;left:0;right:0;z-index:20;max-width:760px;margin:auto;height:74px;background:white;border-top:1px solid var(--line);display:flex;overflow-x:auto;padding-bottom:env(safe-area-inset-bottom)}.nav button{border:0;background:white;font-size:8px;color:#65706b;font-weight:700;padding:4px 4px;min-width:72px;flex:1}.nav button.active{color:var(--green);background:#edf5f1}.nav .ico{display:block;font-size:18px;margin-bottom:3px}.notice{padding:11px 12px;border-radius:11px;background:#fff7df;border:1px solid #ebd497;font-size:12px;line-height:1.5}.success{background:#eaf7ef;border-color:#b9dec7;color:#195b32}.dangerbox{background:#fff0f0;border-color:#e9b9b9;color:#7e2222}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:white}table{width:100%;border-collapse:collapse;min-width:900px;font-size:12px}th,td{padding:9px;border-bottom:1px solid #e3e7e5;text-align:left}th{background:var(--green);color:white;position:sticky;top:0}tfoot td{font-weight:800;background:#f2f6f4}.profile-summary{line-height:1.7;font-size:13px}.backup-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#b0b6b3;margin-right:6px}.backup-dot.on{background:#27a354}.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(30px);background:#14201b;color:#fff;padding:11px 15px;border-radius:11px;opacity:0;pointer-events:none;transition:.25s;z-index:200;font-size:13px;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.small{font-size:11px;color:var(--muted)}.site-list{margin-top:10px;border-top:1px solid var(--line);padding-top:7px}.site-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #edf0ee}.site-row:last-child{border-bottom:0}.site-name{font-size:13px;font-weight:700}.site-rate{font-size:11px;color:var(--muted)}.hidden{display:none!important}.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.summary-box{border:1px solid var(--line);border-radius:10px;padding:9px;background:#f8faf9}.summary-box b{display:block;font-size:15px;margin-top:3px}.inline-check label{font-size:13px;font-weight:600}.version{font-size:11px;color:var(--muted);text-align:center;margin-top:14px}.gps-box{background:#f1f7f4;border:1px solid #c9ddd3;border-radius:12px;padding:12px;margin:10px 0}.gps-status{font-size:12px;color:var(--muted);line-height:1.5;margin-top:8px}.restore-detail{background:#f8faf9;border:1px solid var(--line);border-radius:12px;padding:12px;line-height:1.7;font-size:13px}.coord{font-family:monospace;font-size:11px}.tabs{display:flex;gap:7px;margin:0 0 14px;overflow:auto}.tabs button{border:1px solid var(--line);background:white;padding:9px 12px;border-radius:999px;font-weight:700;white-space:nowrap}.tabs button.active{background:var(--green);color:white;border-color:var(--green)}.progress{height:8px;background:#e7ece9;border-radius:999px;overflow:hidden;margin:10px 0}.progress span{display:block;height:100%;background:var(--gold);width:0}.month-label{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}.amount-line{display:flex;justify-content:space-between;gap:8px;margin-top:7px;font-size:12px}.due{color:#9a5b00;font-weight:700}.overdue{color:var(--danger);font-weight:800}.paidline{color:#176535;font-weight:700}.divider{height:1px;background:var(--line);margin:13px 0}.compact{margin-bottom:7px}.checkrow{display:flex;gap:8px;align-items:flex-start;font-size:13px}.checkrow input{margin-top:2px}.reminder-count{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:999px;background:var(--gold);color:#251d0d;font-size:11px;font-weight:800}.detail-list{display:flex;flex-direction:column;gap:8px}.detail-row{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:12px;line-height:1.5}
+@media(min-width:700px){.page{padding:22px}.modal{align-items:center;justify-content:center}.sheet{max-width:650px;border-radius:22px;max-height:90vh}.nav{border-radius:15px 15px 0 0}.nav button{font-size:9px}}
+@media(max-width:430px){.twocol,.threecol{grid-template-columns:1fr}.btnrow .btn{min-width:110px}.summary-grid{grid-template-columns:1fr}.nav .ico{font-size:17px}.nav button{font-size:7.5px}}
+@media print{body.print-timesheet{background:white;padding:0}.print-timesheet .top,.print-timesheet .nav,.print-timesheet .page:not(#timesheetPage),.print-timesheet #timesheetControls,.print-timesheet .no-print{display:none!important}.print-timesheet #timesheetPage{display:block!important;padding:0}.print-timesheet .panel{border:0;box-shadow:none;padding:0}.print-timesheet .tablewrap{overflow:visible;border:0}.print-timesheet table{min-width:0;font-size:8px}.print-timesheet th{position:static;background:#0b3d2e!important;color:white!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.print-timesheet .timesheet-head{display:block!important}.print-timesheet .summary-grid{grid-template-columns:repeat(3,1fr)}}
+
+.doc-toolbar{display:flex;gap:8px;flex-wrap:wrap}.doc-toolbar .btn{flex:1;min-width:140px}.doc-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px}.doc-row.expired{border-color:#e0a6a6;background:#fff8f8}.doc-row.soon{border-color:#e5c36b;background:#fffdf5}.doc-icon{font-size:24px}.doc-title{font-weight:800;font-size:14px}.doc-status{font-size:11px;font-weight:800;margin-top:4px}.doc-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.cv-output{min-height:360px;font-family:Arial,Helvetica,sans-serif;line-height:1.5}.keyword-chip{display:inline-block;padding:5px 8px;border-radius:999px;background:#edf5f1;color:var(--green);font-size:11px;font-weight:700;margin:3px}.privacy-lock{background:#eef6ff;border:1px solid #bfd5ea;border-radius:12px;padding:12px;font-size:12px;line-height:1.5}.file-meta{font-size:11px;color:var(--muted);word-break:break-all}.loading{opacity:.65;pointer-events:none}.danger-text{color:var(--danger);font-weight:800}
+
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.more-tile{border:1px solid var(--line);background:#fff;border-radius:16px;padding:16px;text-align:left;min-height:108px;box-shadow:0 4px 12px rgba(0,0,0,.04)}.more-tile .mi{font-size:25px;display:block;margin-bottom:8px}.more-tile b{display:block;font-size:15px}.more-tile span{display:block;color:var(--muted);font-size:11px;margin-top:4px;line-height:1.4}.address-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin-bottom:8px}.address-card.selected{border-color:var(--green);background:#f1f7f4}.cv-template-preview{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}.doc-category{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}.doc-check{width:20px;height:20px}.spinner{display:inline-block;width:16px;height:16px;border:2px solid #ccd5d1;border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-3px;margin-right:7px}@keyframes spin{to{transform:rotate(360deg)}}
+.cv-print-area{display:none}.cv-paper{background:white;color:#111;padding:28px;font-family:Arial,Helvetica,sans-serif;line-height:1.45}.cv-paper.classic h1{font-size:27px;margin:0;border-bottom:3px solid #0b3d2e;padding-bottom:7px}.cv-paper.modern h1{font-size:28px;margin:0;color:#0b3d2e}.cv-paper.compact{font-size:12px}.cv-paper pre{white-space:pre-wrap;font:inherit;margin:0}.cv-contact{font-size:12px;color:#45504c;margin:8px 0 16px}
+@media(max-width:430px){.more-grid{grid-template-columns:1fr 1fr}.more-tile{padding:13px;min-height:98px}}
+@media print{body.print-cv{background:white;padding:0}.print-cv .app>.top,.print-cv .nav,.print-cv .page,.print-cv .modal,.print-cv .toast{display:none!important}.print-cv #cvPrintArea{display:block!important}.print-cv .cv-paper{padding:0}.print-cv .cv-paper pre{font-size:10pt}.print-cv .cv-paper.classic h1,.print-cv .cv-paper.modern h1{font-size:20pt}}
+</style>
+<link rel="stylesheet" href="app-v4.2.css">
+<link rel="stylesheet" href="app-v4.3.css">
+<link rel="stylesheet" href="app-v4.6.css">
+<link rel="stylesheet" href="app-v4.7.css"></head>
+<body>
+<div class="app">
+<header class="top"><h1>Job Buddy</h1><p id="topSubtitle">Track hours, wages and payments</p></header>
+
+<section class="page active" id="dashboardPage">
+  <div class="jb-home-shell">
+    <section class="jb-hero-card" aria-label="Work summary">
+      <div class="jb-hero-top">
+        <div>
+          <span class="jb-overline">YOUR WORKSPACE</span>
+          <h2 id="homeGreeting">Welcome back</h2>
+          <p id="homeDate">Today</p>
+        </div>
+        <button class="jb-cloud-button" onclick="backupNow(true)" aria-label="Back up now">
+          <span class="jb-cloud-icon">☁</span>
+          <span><b>Backup</b><small id="homeBackupState">Not connected</small></span>
+        </button>
+      </div>
+
+      <div class="jb-earnings-block">
+        <span>Total earnings</span>
+        <strong id="homeTotalEarnings">£0.00</strong>
+        <small id="homeMonthEarnings">£0.00 earned this month</small>
+      </div>
+
+      <div class="jb-hero-metrics">
+        <div><span>Total hours</span><b id="homeTotalHours">0h 00m</b><small id="homeShiftCount">0 completed shifts</small></div>
+        <div><span>Outstanding</span><b id="salaryRemaining">£0.00</b><small id="salaryReceivedMonth">£0.00 received this month</small></div>
+      </div>
+    </section>
+
+    <section class="jb-dashboard-section">
+      <div class="jb-section-heading"><div><span class="jb-overline">START HERE</span><h3>Quick actions</h3></div></div>
+      <div class="jb-primary-actions">
+        <button class="jb-action jb-action-primary" onclick="openManual()">
+          <span class="jb-action-icon">＋</span><span><b>Add shift</b><small>Record completed work</small></span><em>›</em>
+        </button>
+        <button class="jb-action" onclick="openSchedule()">
+          <span class="jb-action-icon">◷</span><span><b>Schedule shift</b><small>Set a reminder before work</small></span><em>›</em>
+        </button>
+      </div>
+      <div class="jb-tool-grid">
+        <button class="jb-tool" onclick="go('money')"><span class="jb-tool-icon money-icon">£</span><b>Money</b><small>Salary & payments</small></button>
+        <button class="jb-tool" onclick="go('documents')"><span class="jb-tool-icon jb-abbr">DOC</span><b>Documents</b><small>Upload & send</small></button>
+        <button class="jb-tool" onclick="go('timesheet')"><span class="jb-tool-icon jb-abbr">TS</span><b>Timesheets</b><small>PDF & CSV</small></button>
+        <button class="jb-tool" onclick="go('employers')"><span class="jb-tool-icon jb-abbr">EMP</span><b>Employers</b><small>Rates & sites</small></button>
+      </div>
+      <button class="jb-cv-strip" onclick="go('cv')"><span class="jb-cv-mark">CV</span><span><b>Tailor your CV</b><small>Use your saved CV, documents and chosen address</small></span><em>›</em></button>
+    </section>
+
+    <section class="jb-dashboard-section">
+      <div class="jb-section-heading"><div><span class="jb-overline">CURRENT MONTH</span><h3>Your progress</h3></div></div>
+      <div class="jb-month-grid">
+        <div class="jb-month-card"><span>Hours</span><b id="monthHours">0h 00m</b><small>Worked this month</small></div>
+        <div class="jb-month-card"><span>Earned</span><b id="monthPay">£0.00</b><small>Shift earnings</small></div>
+        <div class="jb-month-card"><span>Received</span><b id="homeReceivedMonth">£0.00</b><small>Payments this month</small></div>
+      </div>
+    </section>
+
+    <section class="jb-dashboard-section">
+      <div class="jb-section-heading"><div><span class="jb-overline">AT A GLANCE</span><h3>Needs attention</h3></div><span class="jb-count-badge" id="homeAttentionCount">0</span></div>
+      <div class="jb-attention-list">
+        <button onclick="go('history')"><span class="jb-attention-icon">◷</span><span><b>Next shift</b><small id="nextShiftText">No future shift</small></span><strong id="scheduledCount">0</strong></button>
+        <button onclick="go('documents')"><span class="jb-attention-icon jb-abbr">DOC</span><span><b>Documents</b><small id="homeDocumentText">All documents current</small></span><strong id="homeDocumentAlerts">0</strong></button>
+        <button onclick="go('money')"><span class="jb-attention-icon">!</span><span><b>Reminders</b><small>Shift and payment dates</small></span><strong id="reminderCount">0</strong></button>
+      </div>
+    </section>
+
+    <section class="jb-dashboard-section jb-feed-section">
+      <div class="jb-section-heading"><div><span class="jb-overline">UPCOMING</span><h3>Next scheduled shift</h3></div><button class="jb-text-button" onclick="openSchedule()">Add schedule</button></div>
+      <div id="upcomingShiftList" class="jb-compact-list"></div>
+    </section>
+
+    <section class="jb-dashboard-section jb-feed-section">
+      <div class="jb-section-heading"><div><span class="jb-overline">RECENT</span><h3>Latest shifts</h3></div><button class="jb-text-button" onclick="go('history')">View all</button></div>
+      <div id="recentList" class="jb-compact-list"></div>
+    </section>
+
+    <section class="jb-dashboard-section jb-feed-section">
+      <div class="jb-section-heading"><div><span class="jb-overline">REMINDERS</span><h3>Important dates</h3></div><button class="jb-text-button" onclick="go('money')">View money</button></div>
+      <div id="dashboardReminderList" class="jb-compact-list"></div>
+    </section>
+  </div>
+  <div class="legacy-clock hidden" aria-hidden="true"><strong id="clockState"></strong><span id="clockSite"></span><span id="clockBadge"></span><span id="liveTimer"></span><button id="clockMainBtn"></button></div>
+</section>
+<section class="page" id="historyPage">
+  <div class="section-title"><h2>Shift history</h2><div><button class="mini" onclick="openSchedule()">Schedule</button> <button class="mini" onclick="openManual()">Add completed</button></div></div>
+  <div class="panel shift-reminder-panel"><div><h3>Shift notifications</h3><p class="meta">Scheduled shifts notify you before the start time. Default: <strong id="shiftReminderDefaultLabel">1 hour before</strong>.</p></div><button class="btn outline" onclick="enableNotifications()">Notification settings</button></div>
+  <div class="panel">
+    <div class="twocol"><div class="field"><label>From date</label><input type="date" id="histFrom" onchange="renderHistory()"></div><div class="field"><label>To date</label><input type="date" id="histTo" onchange="renderHistory()"></div></div>
+    <div class="field"><label>Employer</label><select id="histEmployer" onchange="renderHistory()"></select></div>
+    <div class="field"><label>Search employer, location or role</label><input id="histSearch" placeholder="e.g. Tesco, security" oninput="renderHistory()"></div>
+  </div>
+  <div class="section-title"><h2>Scheduled shifts</h2><span class="reminder-count" id="historyScheduledCount">0</span></div><div class="list" id="scheduledList"></div>
+  <div class="section-title"><h2>Completed shifts</h2></div><div class="list" id="historyList"></div>
+</section>
+
+<section class="page" id="employersPage">
+  <div class="section-title"><h2>Employers & sites</h2><button class="btn primary" onclick="openEmployer()">＋ Employer</button></div>
+  <div class="notice">Set each employer’s normal hourly rate, usual salary payment day and whether salary is normally paid in the same or following month. Each saved site can have its own rate and GPS location.</div>
+  <div class="list" id="employerList" style="margin-top:12px"></div>
+</section>
+
+<section class="page" id="timesheetPage">
+  <div class="panel" id="timesheetControls">
+    <h2>Create monthly or custom timesheet</h2>
+    <div class="field"><label>Quick month selection</label><input type="month" id="tsMonth" onchange="applyTimesheetMonth()"></div>
+    <div class="twocol"><div class="field"><label>From</label><input type="date" id="tsFrom" onchange="clearTimesheetMonth();renderTimesheet()"></div><div class="field"><label>To</label><input type="date" id="tsTo" onchange="clearTimesheetMonth();renderTimesheet()"></div></div>
+    <div class="field"><label>Employer</label><select id="tsEmployer" onchange="renderTimesheet()"></select></div>
+    <div class="field inline-check"><label><input type="checkbox" id="tsAllTime" onchange="toggleAllTimeTimesheet()"> Use all records to date for the selected employer(s)</label></div>
+    <div class="field inline-check"><label><input type="checkbox" id="includeBank" onchange="renderTimesheet()"> Include bank details in this export</label></div>
+    <div class="field inline-check"><label><input type="checkbox" id="includePaymentSummary" onchange="renderTimesheet()"> Include salary received and remaining summary</label></div>
+    <div class="notice">Choose a month for a monthly timesheet, or select “all records to date” for a complete employer account. One employer creates a separate statement; “All employers combined” calculates everything together.</div>
+    <div class="btnrow"><button class="btn primary" onclick="renderTimesheet()">Generate preview</button><button class="btn outline" onclick="saveSelectedCsv()">Save selected CSV</button><button class="btn gold" onclick="printTimesheet()">Print / Save PDF</button></div>
+    <div class="btnrow"><button class="btn outline" onclick="selectAllAndSave()">All employers CSV</button><button class="btn outline" onclick="saveEmployerSummaryCsv()">Period employer totals CSV</button><button class="btn outline" onclick="saveEmployerAccountCsv()">Employer account CSV</button></div>
+  </div>
+  <div class="panel" id="timesheetOutput">
+    <div class="timesheet-head"><h2 id="tsHeading" style="margin-bottom:4px">WORK TIMESHEET</h2><div class="profile-summary" id="tsProfile"></div></div>
+    <div class="tablewrap"><table><thead><tr><th>Date</th><th>Day</th><th>Employer</th><th>Shift</th><th>Location</th><th>Start</th><th>End</th><th>Break</th><th>Hours</th><th>Rate</th><th>Total</th></tr></thead><tbody id="tsRows"></tbody><tfoot id="tsFoot"></tfoot></table></div>
+    <div id="tsPaymentSummary"></div><div id="tsEmployerSummary"></div>
+  </div>
+</section>
+
+<section class="page" id="moneyPage">
+  <div class="grid">
+    <div class="card"><div class="k">Salary earned</div><div class="v" id="moneySalaryEarned">£0.00</div><div class="small">All employers, all records</div></div>
+    <div class="card"><div class="k">Salary owed to me</div><div class="v" id="moneySalaryRemaining">£0.00</div><div class="small">Across all employers and months</div></div>
+    <div class="card"><div class="k">Friends owe me</div><div class="v" id="moneyOwedToMe">£0.00</div><div class="small">Personal money diary</div></div>
+    <div class="card"><div class="k">I owe others</div><div class="v" id="moneyIOwe">£0.00</div><div class="small">Remaining personal payments</div></div>
+    <div class="card"><div class="k">Received this month</div><div class="v" id="moneyReceivedMonth">£0.00</div><div class="small">Salary instalments received</div></div>
+  </div>
+  <div class="tabs" style="margin-top:16px"><button id="salaryTab" class="active" onclick="showMoneyTab('salary')">Salary by employer</button><button id="diaryTab" onclick="showMoneyTab('diary')">Personal diary</button><button id="receivedTab" onclick="showMoneyTab('received')">Received by month</button></div>
+  <div id="salaryMoneySection">
+    <div class="panel">
+      <div class="twocol"><div class="field compact"><label>Account view</label><select id="payrollScope" onchange="renderMoney()"><option value="alltime">Employer account — all time</option><option value="month">Selected salary month</option></select></div><div class="field compact"><label>Employer</label><select id="payrollEmployer" onchange="renderMoney()"></select></div></div>
+      <div class="field compact hidden" id="payrollMonthWrap"><label>Salary earned month</label><input type="month" id="payrollMonth" onchange="renderMoney()"></div>
+      <div class="notice" id="payrollScopeNotice">All-time view combines every shift, salary adjustment, received instalment and remaining balance for each employer. Switch to month view for July, August or another salary month.</div>
+    </div>
+    <div class="list" id="payrollList"></div>
+  </div>
+  <div id="diaryMoneySection" class="hidden">
+    <div class="section-title"><h2>Personal money diary</h2><button class="btn primary" onclick="openDebt()">＋ Add record</button></div>
+    <div class="notice">Use “They owe me” for a friend or person who must pay you. Use “I owe them” for money you need to pay someone. Partial payments reduce the remaining balance.</div>
+    <div class="list" id="debtList" style="margin-top:12px"></div>
+  </div>
+  <div id="receivedMoneySection" class="hidden">
+    <div class="panel"><div class="field compact"><label>Payment received month</label><input type="month" id="receivedMonth" onchange="renderReceivedReport()"></div><div class="notice">This report separates when money was earned from when it arrived. For example, July salary received in August appears here under August.</div></div>
+    <div class="list" id="receivedReportList"></div>
+  </div>
+</section>
+
+
+<section class="page" id="morePage">
+  <div class="panel"><h2>More tools</h2><div class="more-grid">
+    <button class="more-tile" onclick="go('money')"><span class="mi">£</span><b>Money & salary</b><span>Payments, promises and personal money diary</span></button>
+    <button class="more-tile" onclick="go('documents')"><span class="mi">▣</span><b>Documents</b><span>Secure job-document wallet and employer packs</span></button>
+    <button class="more-tile" onclick="go('cv')"><span class="mi">CV</span><b>CV Assistant</b><span>UK CV tailoring with saved addresses</span></button>
+    <button class="more-tile" onclick="go('profile')"><span class="mi">●</span><b>Profile</b><span>Name, SIA and bank details</span></button>
+    <button class="more-tile" onclick="go('settings')"><span class="mi">⚙</span><b>Settings</b><span>Backup, reminders and privacy controls</span></button>
+  </div></div>
+  <div class="panel"><h3>Private by design</h3><div class="privacy-lock">Your shifts, payments, documents, CV, addresses and API key remain on this installation or in backups you choose. They are not included when you share the APK.</div></div>
+</section>
+
+<section class="page" id="profilePage">
+  <div class="panel"><h2>Personal & payment details</h2>
+    <div class="field"><label>Full name</label><input id="pName" autocomplete="name"></div>
+    <div class="twocol"><div class="field"><label>SIA licence number</label><input id="pSia"></div><div class="field"><label>SIA expiry</label><input type="date" id="pSiaExpiry"></div></div>
+    <div class="field"><label>Job title</label><input id="pJob" placeholder="Security Officer"></div><div class="twocol"><div class="field"><label>Email</label><input id="pEmail" type="email"></div><div class="field"><label>Phone</label><input id="pPhone" inputmode="tel"></div></div>
+    <h3>Bank details</h3>
+    <div class="field"><label>Bank name</label><input id="pBank"></div>
+    <div class="field"><label>Account holder name</label><input id="pHolder"></div>
+    <div class="twocol"><div class="field"><label>Sort code</label><input id="pSort" inputmode="numeric"></div><div class="field"><label>Account number</label><input id="pAccount" inputmode="numeric"></div></div>
+    <div class="notice">Bank details are excluded from timesheets unless you tick “Include bank details” for that export.</div>
+    <button class="btn primary full" style="margin-top:14px" onclick="saveProfile()">Save profile</button>
+  </div>
+</section>
+
+
+<section class="page" id="documentsPage">
+  <div class="grid"><div class="card"><div class="k">Documents saved</div><div class="v" id="docTotal">0</div></div><div class="card"><div class="k">Need replacement</div><div class="v" id="docExpired">0</div></div></div>
+  <div class="panel"><div class="section-title"><h2>Secure Documents Wallet</h2><button class="btn primary" onclick="openDocumentEditor()">+ Upload</button></div>
+    <div class="privacy-lock"><strong>Private to this installation.</strong> Documents are stored inside this app’s local database. They are not embedded in the APK and are not shared when you send the APK to another person.</div>
+    <div class="field" style="margin-top:12px"><label>Filter</label><select id="docFilter" onchange="renderDocuments()"><option value="all">All documents</option><option value="current">Current only</option><option value="expiring">Expiring soon</option><option value="expired">Expired / update required</option></select></div>
+    <div class="checkrow"><input type="checkbox" id="docSelectAll" onchange="toggleAllDocuments(this.checked)"><label for="docSelectAll">Select all shown documents</label></div>
+    <div id="documentList" style="margin-top:12px"></div>
+  </div>
+  <div class="panel"><h2>Download or send</h2><div class="notice">Select documents above. Download original files together as a ZIP, or merge supported PDF/JPG/PNG files into one professional PDF pack.</div><div class="doc-toolbar" style="margin-top:12px"><button class="btn primary" onclick="downloadSelectedSeparately()">Separate originals (ZIP)</button><button class="btn gold" onclick="downloadSelectedAsPdf()">Combine into one PDF</button><button class="btn outline" onclick="downloadFullBackupWithDocuments()">Full backup incl. documents</button><button class="btn danger" onclick="deleteSelectedDocuments()">Delete selected</button></div></div>
+  <div class="panel"><h2>Automatic replacement rules</h2><p class="meta">Share-code evidence and bank statements/proof of address automatically expire 30 days after upload. At expiry, the stored file is removed and the record remains marked “Upload updated document.” Other documents use the expiry date you enter.</p></div>
+</section>
+
+
+<section class="page" id="cvPage">
+  <div class="panel">
+    <div class="cv-step"><div class="cv-step-number">1</div><div class="cv-step-body">
+      <h2>Your saved CV</h2>
+      <p class="meta">Upload your current CV once. The app securely keeps its extracted text until you replace or clear it.</p>
+      <div id="cvSourceCard" class="cv-source-card empty-source">
+        <div id="cvSourceEmpty"><strong>No CV uploaded</strong><div class="meta" style="margin-top:5px">PDF, DOCX, TXT, JPG or PNG</div></div>
+        <div id="cvSourceSaved" class="hidden cv-source-row"><div class="cv-file-icon">CV</div><div class="cv-source-info"><strong id="cvSourceName">Saved CV</strong><span id="cvSourceMeta"></span></div></div>
+        <div class="btnrow"><button class="btn primary" onclick="pickMasterCvFile()">Upload / replace CV</button><button class="btn danger hidden" id="cvClearSourceBtn" onclick="clearMasterCv()">Clear CV</button></div>
+      </div>
+      <input class="hidden" id="cvUploadFallback" type="file" accept="application/pdf,.pdf,.docx,.txt,text/plain,image/*" onchange="loadMasterCvFallback(event)">
+      <textarea id="cvMaster" class="hidden"></textarea>
+    </div></div>
+  </div>
+
+  <div class="panel">
+    <div class="cv-step"><div class="cv-step-number">2</div><div class="cv-step-body">
+      <h2>Target vacancy</h2>
+      <p class="meta">Paste the vacancy. The generator will use only facts found in your saved CV and relevant verified documents.</p>
+      <div class="twocol" style="margin-top:13px"><div class="field"><label>Target job title</label><input id="cvJobTitle" placeholder="Security Officer, Warehouse Operative..."></div><div class="field"><label>CV design</label><select id="cvTemplate" onchange="saveCVWorkspace()"><option value="classic">UK ATS Classic</option><option value="modern">Professional Modern</option><option value="compact">Compact one-column</option></select></div></div>
+      <div class="field"><label>Full job description</label><textarea id="cvJobDescription" style="min-height:190px" placeholder="Paste the vacancy description here" oninput="refreshCvRelevantDocumentsDebounced()"></textarea></div>
+      <div class="field"><label>Extra true facts or achievements (optional)</label><textarea id="cvFacts" placeholder="Only add facts that are not already in your CV or uploaded certificates."></textarea></div>
+      <div class="btnrow"><button class="btn outline" onclick="saveCVWorkspace()">Save vacancy</button><button class="btn outline" onclick="openAddressManager()">Manage CV addresses</button></div>
+    </div></div>
+  </div>
+
+  <div class="panel">
+    <div class="cv-step"><div class="cv-step-number">3</div><div class="cv-step-body">
+      <h2>Verified documents</h2>
+      <p class="meta">The app automatically suggests safe, job-relevant licences and certificates. Sensitive identity, bank and right-to-work documents are never added to CV text.</p>
+      <div id="cvRelevantDocs" class="cv-document-list"></div>
+      <div class="btnrow"><button class="btn outline" onclick="refreshCvRelevantDocuments(true)">Refresh suggestions</button><button class="btn outline" onclick="go('documents')">Open Documents</button></div>
+    </div></div>
+  </div>
+
+  <div class="panel">
+    <div class="cv-step"><div class="cv-step-number">4</div><div class="cv-step-body">
+      <h2>Generate tailored CV</h2>
+      <div class="tabs"><button id="cvOfflineTab" class="active" onclick="setCvMode('offline')">Private offline</button><button id="cvApiTab" onclick="setCvMode('gemini')">Gemini AI</button></div>
+      <div id="cvOfflineSettings" class="notice success"><strong>Private mode:</strong> no account or API key. It creates a structured ATS draft from your saved CV and verified qualifications.</div>
+      <div id="cvApiSettings" class="hidden"><div class="notice"><strong>Optional Gemini:</strong> use your own Google AI Studio API key. The app does not include a shared key and never sends passport, bank statement, NI or right-to-work files.</div><div class="btnrow"><button class="btn blue" onclick="openGoogleAiStudio()">Open Google AI Studio</button><button class="btn outline" onclick="openGeminiWeb()">Open Gemini</button></div><div class="twocol" style="margin-top:10px"><div class="field"><label>Gemini model</label><input id="cvModel" value="gemini-2.5-flash"></div><div class="field"><label>API key</label><input type="password" id="cvApiKey" autocomplete="off"></div></div><div class="checkrow"><input type="checkbox" id="cvRememberKey"><label for="cvRememberKey">Remember this key on this phone</label></div></div>
+      <div class="btnrow"><button class="btn gold" onclick="generateTailoredCV()">Choose address & generate</button><button class="btn outline" onclick="copyCvPrompt()">Copy expert prompt</button></div>
+      <div id="cvAddressUsed" class="small" style="margin-top:11px">You will choose a saved or new address before generation.</div>
+      <div class="cv-status-row"><span class="cv-status-chip" id="cvSourceStatus">CV source required</span><span class="cv-status-chip neutral" id="cvDocStatus">No qualifications selected</span></div>
+      <div id="cvKeywords" style="margin-top:12px"></div>
+    </div></div>
+  </div>
+
+  <div class="panel"><h2>Tailored CV output</h2><p class="meta">Review every line before applying. You remain responsible for factual accuracy.</p><textarea id="cvOutput" class="cv-output" placeholder="Your tailored CV will appear here"></textarea><div class="btnrow"><button class="btn primary" onclick="downloadCvText()">Download text</button><button class="btn outline" onclick="downloadCvHtml()">Word-compatible</button><button class="btn outline" onclick="copyCvOutput()">Copy CV</button><button class="btn gold" onclick="printCvOutput()">Save as PDF</button></div></div>
+</section>
+
+<section class="page" id="settingsPage">
+  <div class="panel"><h2>Shift defaults</h2>
+    <div class="field"><label>Default employer</label><select id="sEmployer"></select></div>
+    <div class="field"><label>Default role</label><input id="sRole"></div>
+    <button class="btn primary full" onclick="saveSettings()">Save defaults</button>
+  </div>
+  <div class="panel"><h2>Shift reminders</h2><p id="notificationStatus"><span class="backup-dot"></span>Notification permission not checked</p><div class="field"><label>Default reminder before each shift</label><select id="defaultShiftReminder" onchange="saveReminderDefaults()"><option value="0">At start time</option><option value="15">15 minutes before</option><option value="30">30 minutes before</option><option value="60">1 hour before</option><option value="120">2 hours before</option><option value="1440">1 day before</option></select></div><div class="notice">The default is one hour before. You can change it here and override it for any individual scheduled shift.</div><div class="btnrow"><button class="btn primary" onclick="enableNotifications()">Enable notifications</button><button class="btn outline" onclick="syncAllReminders(true)">Refresh reminders</button></div></div>
+  <div class="panel"><h2>Google Drive backup</h2><p id="backupStatus"><span class="backup-dot"></span>Not connected</p><div class="field"><label>Automatic backup frequency</label><select id="backupFrequency" onchange="saveBackupFrequency()"><option value="1">Every day</option><option value="7">Every 7 days</option><option value="15">Every 15 days</option><option value="30">Every 30 days</option></select></div><div class="notice">Connect once by choosing a private folder in Google Drive. Job Buddy then creates a new dated full backup automatically at the selected interval, including shifts, employers, payments, reminders, profile, CV data and uploaded documents. Android may run a scheduled backup shortly after the due time to protect battery life.</div><div class="backup-summary" id="backupScheduleSummary">Daily backup is selected.</div><div class="btnrow"><button class="btn blue" onclick="connectBackup()">Connect Google Drive</button><button class="btn primary" onclick="backupNow(true)">Backup now</button><button class="btn danger" onclick="disconnectBackup()">Disconnect</button></div></div>
+  <div class="panel"><h2>Download or restore data</h2><div class="btnrow"><button class="btn gold" onclick="downloadFullBackupWithDocuments()">Download full backup</button><button class="btn primary" onclick="uploadBackup()">Upload / Restore backup</button></div><input class="hidden" type="file" id="backupFileInput" accept="*/*" onchange="loadBackupInput(event)"><div class="notice" style="margin-top:12px">Full backups include every uploaded document and the saved CV source. Restore can merge records or replace the current installation.</div><div class="field" style="margin-top:12px"><label>Backup not opening? Paste the complete JSON here</label><textarea id="pasteBackupText" placeholder="Paste backup JSON"></textarea></div><button class="btn outline full" onclick="restorePastedBackup()">Preview pasted backup</button><div class="notice" style="margin-top:12px"><strong>Privacy:</strong> personal records are stored only on this phone and in backups you choose. The APK contains no personal shifts or payment data, so another user starts with an empty app.</div><button class="btn danger full" style="margin-top:14px" onclick="clearAll()">Delete all local data</button></div>
+  <div class="version">Job Buddy v4.7</div>
+</section>
+
+<nav class="nav">
+<button class="active" data-page="dashboard" onclick="go('dashboard')"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.7 12 3.8l8.5 6.9v9a1.3 1.3 0 0 1-1.3 1.3H4.8a1.3 1.3 0 0 1-1.3-1.3z"/><path d="M9 21v-6.5h6V21"/></svg></span>Home</button>
+<button data-page="history" onclick="go('history')"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M8 3.5v4M16 3.5v4M4 10h16M8 14h3M8 17h6"/></svg></span>Shifts</button>
+<button data-page="employers" onclick="go('employers')"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V7.5L12 4v17M12 9h8v12M7.5 10h1M7.5 14h1M7.5 18h1M15.5 13h1M15.5 17h1M3 21h18"/></svg></span>Employers</button>
+<button data-page="timesheet" onclick="go('timesheet')"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3 3V21H6z"/><path d="M15 3.5V7h3M9 11h6M9 14.5h6M9 18h4"/></svg></span>Timesheets</button>
+<button data-page="more" onclick="go('more')"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></span>More</button>
+</nav>
+</div>
+
+<div class="modal" id="shiftModal"><div class="sheet"><h2 id="modalTitle">Add completed shift</h2><input type="hidden" id="mId">
+<div class="field"><label>Employer</label><select id="mEmployer" onchange="onManualEmployerChange()"></select></div><div class="field"><label>Location / site</label><select id="mSite" onchange="onManualSiteChange()"></select></div><div class="field hidden" id="mCustomWrap"><label>Custom location</label><input id="mCustomLocation"></div>
+<div class="twocol"><div class="field"><label>Date worked</label><input type="date" id="mDate"></div><div class="field"><label>Role / shift</label><input id="mRole"></div></div><div class="twocol"><div class="field"><label>Start time</label><input type="time" id="mStart"></div><div class="field"><label>End time</label><input type="time" id="mEnd"></div></div><div class="twocol"><div class="field"><label>Unpaid break (minutes)</label><input type="number" id="mBreak" min="0"></div><div class="field"><label>Rate per hour (£)</label><input type="number" id="mRate" min="0" step="0.01"></div></div><div class="twocol"><div class="field"><label>Additional payment (£)</label><input type="number" id="mAdditional" step="0.01"></div><div class="field"><label>Deduction (£)</label><input type="number" id="mDeduction" step="0.01"></div></div><div class="field"><label>Notes</label><textarea id="mNotes"></textarea></div><div class="btnrow"><button class="btn outline" onclick="closeModal()">Cancel</button><button class="btn primary" onclick="saveManual()">Save shift</button></div></div></div>
+
+<div class="modal" id="scheduleModal"><div class="sheet"><h2 id="scheduleTitle">Schedule future shift</h2><input type="hidden" id="schId"><div class="field"><label>Employer</label><select id="schEmployer" onchange="onScheduleEmployerChange()"></select></div><div class="field"><label>Location / site</label><select id="schSite" onchange="onScheduleSiteChange()"></select></div><div class="field hidden" id="schCustomWrap"><label>Custom location</label><input id="schCustomLocation"></div><div class="twocol"><div class="field"><label>Shift date</label><input type="date" id="schDate"></div><div class="field"><label>Role</label><input id="schRole"></div></div><div class="twocol"><div class="field"><label>Start time</label><input type="time" id="schStart"></div><div class="field"><label>Expected end</label><input type="time" id="schEnd"></div></div><div class="twocol"><div class="field"><label>Rate per hour (£)</label><input type="number" id="schRate" min="0" step="0.01"></div><div class="field"><label>Remind me</label><select id="schReminder"><option value="0">At start time</option><option value="15">15 minutes before</option><option value="30">30 minutes before</option><option value="60" selected>1 hour before</option><option value="120">2 hours before</option><option value="1440">1 day before</option></select></div></div><div class="field"><label>Notes</label><textarea id="schNotes"></textarea></div><div class="btnrow"><button class="btn outline" onclick="closeSchedule()">Cancel</button><button class="btn primary" onclick="saveScheduledShift()">Save schedule & reminder</button></div></div></div>
+
+<div class="modal hidden" id="clockInModal"><div class="sheet"><h2>Clock in</h2><div class="field"><label>Employer</label><select id="ciEmployer" onchange="onClockEmployerChange()"></select></div><div class="field"><label>Location / site</label><select id="ciSite" onchange="onClockSiteChange()"></select></div><div class="field hidden" id="ciCustomWrap"><label>Custom location</label><input id="ciCustomLocation"></div><div class="field"><label>Role</label><input id="ciRole"></div><div class="field"><label>Rate per hour (£)</label><input type="number" id="ciRate" min="0" step="0.01"></div><div class="btnrow"><button class="btn outline" onclick="closeClockIn()">Cancel</button><button class="btn primary" onclick="startClock()">Start shift</button></div></div></div>
+<div class="modal hidden" id="clockOutModal"><div class="sheet"><h2>Clock out</h2><div class="notice success" id="coSummary"></div><div class="field"><label>Unpaid break (minutes)</label><input type="number" id="coBreak" min="0" value="0"></div><div class="field"><label>Notes</label><textarea id="coNotes"></textarea></div><div class="btnrow"><button class="btn outline" onclick="closeClockOut()">Cancel</button><button class="btn gold" onclick="finishClock()">Complete shift</button></div></div></div>
+
+<div class="modal" id="employerModal"><div class="sheet"><h2 id="employerModalTitle">Add employer</h2><input type="hidden" id="eId"><div class="field"><label>Employer / company name</label><input id="eName"></div><div class="twocol"><div class="field"><label>WhatsApp / phone number</label><input id="ePhone" inputmode="tel" placeholder="e.g. 07459 532386"></div><div class="field"><label>Payroll / employee reference</label><input id="ePayroll"></div></div><h3>Pay arrangement</h3><div class="twocol"><div class="field"><label>Pay basis</label><select id="ePayBasis" onchange="updateEmployerPayLabel47()"><option value="hourly">Per hour</option><option value="daily">Per day</option><option value="weekly">Per week</option><option value="fortnightly">Every 15 days</option><option value="monthly">Per month</option></select></div><div class="field"><label id="eRateLabel">Standard hourly rate (£)</label><input type="number" id="eRate" min="0" step="0.01"></div></div><div class="notice" id="ePayBasisHelp">Hourly pay is calculated from each shift. Other arrangements count one standard amount per day, week, 15-day period or month in which shifts are recorded.</div><h3>Normal salary schedule</h3><div class="twocol"><div class="field"><label>Usual payment day</label><input type="number" id="ePayDay" min="1" max="31" value="1"></div><div class="field"><label>Normally paid</label><select id="ePayOffset"><option value="0">Same month</option><option value="1" selected>Following month</option><option value="2">Two months later</option></select></div></div><div class="field"><label>Notes</label><textarea id="eNotes"></textarea></div><div class="btnrow"><button class="btn outline" onclick="closeEmployer()">Cancel</button><button class="btn primary" onclick="saveEmployer()">Save employer</button></div></div></div>
+
+<div class="modal" id="siteModal"><div class="sheet"><h2 id="siteModalTitle">Add site</h2><input type="hidden" id="siteEmployerId"><input type="hidden" id="siteId"><input type="hidden" id="siteAccuracy"><input type="hidden" id="siteCapturedAt"><div class="field"><label>Site / location name</label><input id="siteName"></div><div class="field"><label>Address (optional)</label><input id="siteAddress"></div><div class="field"><label>Site-specific hourly rate (£, optional)</label><input type="number" id="siteRate" min="0" step="0.01" placeholder="Leave blank to use employer rate"></div><div class="gps-box"><button class="btn outline full" type="button" onclick="captureSiteLocation()">⌖ Use current live GPS location</button><div class="gps-status" id="siteGpsStatus">No GPS coordinates saved.</div><div class="twocol" style="margin-top:10px"><div class="field compact"><label>Latitude</label><input type="number" id="siteLatitude" step="0.000001" onchange="updateSiteGpsStatus()"></div><div class="field compact"><label>Longitude</label><input type="number" id="siteLongitude" step="0.000001" onchange="updateSiteGpsStatus()"></div></div></div><div class="notice">A site-specific rate overrides the employer’s normal rate. GPS coordinates and written address remain editable.</div><div class="btnrow"><button class="btn outline" onclick="closeSite()">Cancel</button><button class="btn primary" onclick="saveSite()">Save site</button></div></div></div>
+
+<div class="modal" id="payrollModal"><div class="sheet"><h2 id="payrollModalTitle">Salary payment</h2><input type="hidden" id="payrollEmployerId"><input type="hidden" id="payrollEarnedMonth"><div class="restore-detail" id="payrollModalSummary"></div><div class="tabs" style="margin-top:12px"><button id="payReceiveTab" class="active" onclick="setPayrollModalMode('receive')">Money received</button><button id="payPromiseTab" onclick="setPayrollModalMode('promise')">Promise date</button><button id="payAdjustmentTab" onclick="setPayrollModalMode('adjustment')">Balance adjustment</button></div><div id="payReceiveSection"><div class="twocol"><div class="field"><label>Amount received (£)</label><input type="number" id="payReceiptAmount" min="0.01" step="0.01"></div><div class="field"><label>Date received</label><input type="date" id="payReceiptDate"></div></div><div class="field"><label>Payment note / reference</label><input id="payReceiptNote" placeholder="Bank transfer, part payment, cash..."></div><div class="checkrow"><input type="checkbox" id="payAddNextPromise" onchange="toggleNextPromise()"><label for="payAddNextPromise">Employer promised another payment for the remaining balance</label></div><div id="nextPromiseFields" class="hidden" style="margin-top:12px"><div class="twocol"><div class="field"><label>Next promised date</label><input type="date" id="payNextPromiseDate"></div><div class="field"><label>Expected amount (£, optional)</label><input type="number" id="payNextPromiseAmount" min="0" step="0.01"></div></div><div class="field"><label>Promise note</label><input id="payNextPromiseNote"></div></div></div><div id="payPromiseSection" class="hidden"><div class="twocol"><div class="field"><label>Promised from</label><input type="date" id="payPromiseDate"></div><div class="field"><label>Latest promised date (optional)</label><input type="date" id="payPromiseEndDate"></div></div><div class="field"><label>Expected amount (£, optional)</label><input type="number" id="payPromiseAmount" min="0" step="0.01"></div><div class="field"><label>Promise note</label><input id="payPromiseNote" placeholder="Employer said remaining salary will be paid"></div></div><div id="payAdjustmentSection" class="hidden"><div class="twocol"><div class="field"><label>Salary month</label><input type="month" id="payAdjustmentMonth"></div><div class="field"><label>Amount adjustment (£)</label><input type="number" id="payAdjustmentAmount" step="0.01" placeholder="Positive adds salary; negative corrects it"></div></div><div class="field"><label>Adjustment date</label><input type="date" id="payAdjustmentDate"></div><div class="field"><label>Reason</label><input id="payAdjustmentNote" placeholder="Opening balance, previous salary, correction..."></div></div><div class="btnrow"><button class="btn outline" onclick="closePayrollModal()">Cancel</button><button class="btn primary" onclick="savePayrollAction()">Save</button></div></div></div>
+
+<div class="modal" id="payrollDetailModal"><div class="sheet"><h2>Salary account history</h2><div class="restore-detail" id="payrollDetailSummary"></div><h3 style="margin-top:16px">Salary adjustments / opening balances</h3><div class="detail-list" id="payrollAdjustmentList"></div><h3 style="margin-top:16px">Payments received</h3><div class="detail-list" id="payrollReceiptList"></div><h3 style="margin-top:16px">Promised payment dates</h3><div class="detail-list" id="payrollPromiseList"></div><div class="btnrow"><button class="btn outline" onclick="closePayrollDetail()">Close</button></div></div></div>
+
+<div class="modal" id="debtModal"><div class="sheet"><h2 id="debtModalTitle">Add personal money record</h2><input type="hidden" id="debtId"><div class="twocol"><div class="field"><label>Person’s name</label><input id="debtPerson"></div><div class="field"><label>WhatsApp / phone number</label><input id="debtPhone" inputmode="tel" placeholder="e.g. 07459 532386"></div></div><div class="field"><label>Direction</label><select id="debtDirection"><option value="owed_to_me">They owe me</option><option value="i_owe">I owe them</option></select></div><div class="twocol"><div class="field"><label>Total amount (£)</label><input type="number" id="debtAmount" min="0.01" step="0.01"></div><div class="field"><label>Due / promised date</label><input type="date" id="debtDueDate"></div></div><div class="field"><label>Reason / title</label><input id="debtTitle" placeholder="Loan, shared bill, purchase..."></div><div class="field"><label>Notes</label><textarea id="debtNotes"></textarea></div><div class="btnrow"><button class="btn outline" onclick="closeDebt()">Cancel</button><button class="btn primary" onclick="saveDebt()">Save record & reminder</button></div></div></div>
+
+<div class="modal" id="debtPaymentModal"><div class="sheet"><h2 id="debtPaymentTitle">Record partial payment</h2><input type="hidden" id="debtPaymentDebtId"><div class="restore-detail" id="debtPaymentSummary"></div><div class="twocol" style="margin-top:12px"><div class="field"><label>Amount (£)</label><input type="number" id="debtPaymentAmount" min="0.01" step="0.01"></div><div class="field"><label>Payment date</label><input type="date" id="debtPaymentDate"></div></div><div class="field"><label>Note</label><input id="debtPaymentNote"></div><div class="checkrow"><input type="checkbox" id="debtNewDueCheck" onchange="toggleDebtNextDate()"><label for="debtNewDueCheck">Set a new promised date for the remaining balance</label></div><div class="field hidden" id="debtNewDueWrap" style="margin-top:10px"><label>New due / promised date</label><input type="date" id="debtNewDueDate"></div><div class="btnrow"><button class="btn outline" onclick="closeDebtPayment()">Cancel</button><button class="btn primary" onclick="saveDebtPayment()">Save payment</button></div></div></div>
+
+<div class="modal" id="restoreModal"><div class="sheet"><h2>Restore backup</h2><div class="restore-detail" id="restoreDetails">Loading backup details…</div><div class="notice" style="margin-top:12px"><strong>Merge</strong> keeps current records and adds missing backup records. <strong>Replace</strong> removes current app data and restores exactly what is in the selected backup.</div><div class="btnrow"><button class="btn outline" onclick="closeRestore()">Cancel</button><button class="btn blue" onclick="applyRestore('merge')">Merge records</button><button class="btn danger" onclick="applyRestore('replace')">Replace current data</button></div></div></div>
+
+
+
+<div class="modal" id="addressModal"><div class="sheet"><h2>Choose CV address</h2><div id="savedAddressList"></div><div class="divider"></div><input type="hidden" id="addressId"><div class="field"><label>Address label</label><input id="addressLabel" placeholder="Luton home, Brighton address..."></div><div class="field"><label>Address line 1</label><input id="addressLine1"></div><div class="field"><label>Address line 2 (optional)</label><input id="addressLine2"></div><div class="twocol"><div class="field"><label>Town / city</label><input id="addressCity"></div><div class="field"><label>Postcode</label><input id="addressPostcode"></div></div><div class="field"><label>Country</label><input id="addressCountry" value="United Kingdom"></div><div class="btnrow"><button class="btn outline" onclick="closeAddressModal()">Cancel</button><button class="btn outline" onclick="saveAddressOnly()">Save address</button><button class="btn primary" id="addressUseBtn" onclick="saveAndUseAddress()">Use for this CV</button></div></div></div>
+<div id="cvPrintArea" class="cv-print-area"><div id="cvPrintPaper" class="cv-paper classic"><h1 id="cvPrintName"></h1><div id="cvPrintContact" class="cv-contact"></div><pre id="cvPrintText"></pre></div></div>
+<div class="modal" id="documentModal"><div class="sheet"><h2 id="documentModalTitle">Upload document</h2><input type="hidden" id="docEditId"><div class="field"><label>Document type</label><select id="docType" onchange="onDocumentTypeChange()">
+<optgroup label="Identity and right to work"><option value="passport">Passport</option><option value="evisa">eVisa / immigration-status evidence</option><option value="brp">BRP or historic residence permit</option><option value="share_code">Right-to-work share code / check</option><option value="birth_certificate">Birth or adoption certificate</option><option value="ni">National Insurance evidence</option></optgroup>
+<optgroup label="Security licences and training"><option value="sia">SIA licence</option><option value="sia_training">SIA training qualification</option><option value="door_supervisor">Door Supervisor certificate</option><option value="security_guard">Security Guard certificate</option><option value="cctv">CCTV / Public Space Surveillance certificate</option><option value="first_aid">Emergency First Aid at Work</option><option value="first_aid_full">First Aid at Work</option><option value="act_awareness">ACT Awareness / counter-terrorism training</option><option value="scan">SCaN / See, Check and Notify training</option><option value="conflict_management">Conflict Management certificate</option><option value="physical_intervention">Physical Intervention certificate</option><option value="fire_marshal">Fire Marshal / Fire Warden</option><option value="traffic_marshal">Traffic Marshal / Banksman</option><option value="safe_city">Safe City certificate</option><option value="safeguarding">Safeguarding certificate</option><option value="dbs">DBS certificate</option></optgroup>
+<optgroup label="Employment and payroll"><option value="cv">CV</option><option value="cover_letter">Cover letter</option><option value="employment_reference">Employment reference</option><option value="p45">P45</option><option value="p60">P60</option><option value="payslip">Payslip</option><option value="hmrc">HMRC / tax-code document</option><option value="bank_details">Bank-account evidence</option></optgroup>
+<optgroup label="Address and driving"><option value="bank_statement">Proof of address / bank statement</option><option value="utility_bill">Utility bill</option><option value="council_tax">Council-tax document</option><option value="driving_licence">Driving licence</option><option value="vehicle_insurance">Vehicle insurance</option><option value="mot">MOT certificate</option></optgroup>
+<optgroup label="Warehouse, construction and general jobs"><option value="cscs">CSCS card</option><option value="forklift">Forklift / MHE certificate</option><option value="manual_handling">Manual Handling certificate</option><option value="health_safety">Health and Safety certificate</option><option value="coshh">COSHH certificate</option><option value="food_hygiene">Food Hygiene certificate</option><option value="education">Degree, transcript or completion letter</option><option value="other">Other document</option></optgroup>
+</select></div><div class="field hidden" id="docCustomTypeWrap"><label>Custom document type</label><input id="docCustomType"></div><div class="field"><label>Document title</label><input id="docTitle" placeholder="Passport, SIA Door Supervisor licence..."></div><div class="twocol"><div class="field"><label>Issue / upload date</label><input type="date" id="docIssueDate"></div><div class="field"><label>Expiry date</label><input type="date" id="docExpiryDate"></div></div><div class="twocol"><div class="field"><label>Reminder before expiry</label><select id="docReminderDays"><option value="7">7 days</option><option value="14">14 days</option><option value="30" selected>30 days</option><option value="60">60 days</option><option value="90">90 days</option></select></div><div class="field"><label>Reference / certificate number</label><input id="docReference"></div></div><div class="field"><label>Notes</label><textarea id="docNotes"></textarea></div><div class="panel" style="padding:12px"><div id="docFileMeta" class="file-meta">No file selected.</div><button class="btn outline full" style="margin-top:10px" onclick="pickDocumentFile()">Choose PDF, image or document</button><input class="hidden" id="docFileFallback" type="file" accept="application/pdf,image/*,.pdf,.jpg,.jpeg,.png,.webp,.bmp,.doc,.docx" onchange="loadDocumentFallback(event)"></div>
+<div id="docScanStatus" class="notice"><strong>Automatic reading:</strong> choose a PDF, JPG or PNG. The app reads it privately on this phone and asks you to confirm any detected date.</div>
+<div id="docScanResult" class="panel hidden" style="padding:12px">
+  <h3>Detected document details</h3>
+  <div class="restore-detail"><strong>Type:</strong> <span id="docDetectedType">—</span><br><strong>Issue date:</strong> <span id="docDetectedIssue">—</span><br><strong>Expiry date:</strong> <span id="docDetectedExpiry">—</span><br><strong>Reference:</strong> <span id="docDetectedReference">—</span></div>
+  <div class="btnrow" style="margin-top:10px"><button class="btn primary" onclick="applyDetectedDocumentDetails(false)">Use detected details</button><button class="btn outline" onclick="analyseCurrentDocument()">Read again</button></div>
+  <details style="margin-top:10px"><summary>View extracted text preview</summary><pre id="docExtractedPreview" style="white-space:pre-wrap;max-height:180px;overflow:auto;font-size:12px"></pre></details>
+  <div class="notice" style="margin-top:10px"><strong>Confirm before saving:</strong> OCR can misread numbers. The app will only use the date after you review and save this form.</div>
+</div><div id="docAutoRule" class="notice"></div><div class="btnrow"><button class="btn outline" onclick="closeDocumentEditor()">Cancel</button><button class="btn primary" onclick="saveDocumentRecord()">Save document</button></div></div></div>
+
+<div class="toast" id="toast"></div><script src="app.js"></script><script src="pdf-lib.min.js"></script><script src="jszip.min.js"></script><script src="pdf.min.js"></script><script src="tesseract.min.js"></script><script src="app-v4.js"></script><script src="app-v4.1.js"></script><script src="app-v4.2.js"></script><script src="app-v4.3.js"></script><script src="app-v4.6.js"></script><script src="app-v4.7.js"></script>
+</body></html>

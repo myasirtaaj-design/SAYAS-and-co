@@ -1,0 +1,22 @@
+# Android / Gradle
+*.iml
+.gradle/
+build/
+local.properties
+.cxx/
+captures/
+output.json
+
+# Signing material — never commit
+*.jks
+*.keystore
+keystore.properties
+
+# App data exports. Job Buddy backups (Job_Buddy_Full_Backup_*.json) hold real wage, employer and
+# contact records; they are user data, not fixtures.
+Job_Buddy_Full_Backup_*.json
+*.backup.json
+
+# IDE / OS
+.idea/
+.DS_Store

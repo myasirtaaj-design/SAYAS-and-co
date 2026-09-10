@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    // The R class the receivers import lives here, so the namespace has to stay in step with the
+    // package name recorded in the shipped APK.
+    namespace 'com.yasir.myshiftrecord.plus'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.yasir.myshiftrecord.plus'
+        minSdk 26
+        targetSdk 35
+        versionCode 14
+        versionName '4.8'
+    }
+
+    buildTypes {
+        release {
+            // The shipped APK was not shrunk or obfuscated. Turning R8 on is safe for the Java
+            // side but would need `-keepclassmembers` rules for @JavascriptInterface methods, so
+            // it stays off to match the published build.
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+}
+
+// The app code touches nothing outside the Android framework and org.json, which the platform
+// provides. See README.md — the shipped APK carried a large unused dependency tree that came from
+// the template APK it was repackaged over, not from this source.
+dependencies {
+}
+
+// AGP's asset merger expands any assets/**/*.gz and drops the .gz suffix
+// (MergedAssetWriter.shouldBeUnGzipped), and there is no flag to opt out of it. Tesseract.js
+// requests `tessdata/eng.traineddata.gz` under that exact name — `langPath` in app-v4.1.js plus its
+// default `gzip: true` — so a stock build would ship the traineddata under a name the OCR worker
+// never asks for and document scanning would fail at runtime. Restore the pristine file after the
+// merge so the packaged assets match what the app fetches.
+tasks.matching { it.name ==~ /^merge.*Assets$/ }.configureEach { mergeTask ->
+    // The fix-up mutates the merge output, so a build-cache hit would silently restore the
+    // pre-fix state.
+    mergeTask.outputs.cacheIf { false }
+    mergeTask.doLast {
+        def pristine = file('src/main/assets/tessdata/eng.traineddata.gz')
+        mergeTask.outputs.files.each { root ->
+            def expanded = new File(root, 'tessdata/eng.traineddata')
+            if (expanded.isFile()) {
+                expanded.delete()
+                new File(root, 'tessdata/eng.traineddata.gz').bytes = pristine.bytes
+            }
+        }
+    }
+}

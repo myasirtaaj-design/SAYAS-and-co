@@ -1,0 +1,12 @@
+Job Buddy includes the following open-source components for on-device document reading:
+
+Tesseract.js 5.1.1 and tesseract.js-core 5.1.1
+Copyright contributors. Apache License 2.0.
+https://github.com/naptha/tesseract.js
+
+English tessdata package @tesseract.js-data/eng 1.0.0
+Based on Tesseract trained data. Apache License 2.0.
+
+PDF.js 3.11.174
+Copyright Mozilla and contributors. Apache License 2.0.
+https://mozilla.github.io/pdf.js/

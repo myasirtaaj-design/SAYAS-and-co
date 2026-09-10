@@ -1,0 +1,34 @@
+/* v4.5 — professional home dashboard with all important actions */
+.home-overview{padding:20px;overflow:hidden;position:relative}
+.home-overview:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-70px;top:-90px;background:radial-gradient(circle,rgba(201,162,75,.24),rgba(201,162,75,0));pointer-events:none}
+.home-overview-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;position:relative;z-index:1}
+.home-overview-head h2{font-size:22px;margin:4px 0 5px;letter-spacing:-.4px}
+.home-overview-head p{margin:0;max-width:430px}
+.home-eyebrow{font-size:10px;font-weight:900;letter-spacing:1.15px;color:var(--accent);opacity:.82}
+.home-backup-button{border:1px solid rgba(12,107,88,.18);background:rgba(255,255,255,.74);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:16px;padding:10px 12px;color:var(--accent);display:flex;align-items:center;gap:7px;font-size:12px;box-shadow:0 7px 20px rgba(31,42,38,.06);white-space:nowrap}
+.home-backup-button span{font-size:17px}.home-backup-button b{font-size:11px}
+.home-total-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;position:relative;z-index:1}
+.home-total-card{padding:15px;border:1px solid rgba(255,255,255,.75);border-radius:18px;background:rgba(255,255,255,.64);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 8px 22px rgba(31,42,38,.05);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.home-total-card.highlight{background:linear-gradient(145deg,rgba(12,107,88,.92),rgba(25,139,116,.88));color:white;border-color:rgba(255,255,255,.2)}
+.home-total-card span,.home-total-card small{display:block;font-size:11px;font-weight:700;opacity:.74}.home-total-card strong{display:block;font-size:25px;line-height:1.1;margin:8px 0 5px;letter-spacing:-.5px}.home-total-card.highlight small,.home-total-card.highlight span{color:rgba(255,255,255,.82)}
+.home-action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.home-action{border:1px solid rgba(205,215,210,.85);border-radius:19px;background:rgba(255,255,255,.76);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:14px 10px;min-height:116px;text-align:left;box-shadow:0 7px 20px rgba(31,42,38,.05);color:var(--ink);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start}
+.home-action.primary-action{background:linear-gradient(145deg,var(--accent),var(--accent2));color:white;border-color:transparent;box-shadow:0 13px 26px rgba(12,107,88,.20)}
+.home-action-icon{width:37px;height:37px;border-radius:12px;background:rgba(12,107,88,.10);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;margin-bottom:11px;color:var(--accent)}
+.primary-action .home-action-icon{background:rgba(255,255,255,.18);color:white}.home-action-icon.text-icon{font-size:12px;letter-spacing:.3px}
+.home-action b{font-size:13px;line-height:1.15}.home-action small{font-size:9.5px;line-height:1.3;margin-top:4px;color:var(--muted);font-weight:650}.primary-action small{color:rgba(255,255,255,.78)}
+.home-status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 14px}
+.home-status-card{border:1px solid rgba(205,215,210,.82);border-radius:17px;background:rgba(255,255,255,.70);padding:13px;text-align:left;color:var(--ink);box-shadow:0 5px 16px rgba(31,42,38,.04)}
+.home-status-card span,.home-status-card small{display:block;font-size:10px;color:var(--muted);font-weight:650;line-height:1.35}.home-status-card strong{display:block;font-size:18px;margin:6px 0 3px;color:var(--accent);letter-spacing:-.25px}
+.home-month-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid rgba(205,215,210,.9);background:rgba(205,215,210,.75);border-radius:17px;overflow:hidden;margin-bottom:16px}
+.home-month-strip>div{background:rgba(255,255,255,.80);padding:12px 13px;min-width:0}.home-month-strip span{display:block;color:var(--muted);font-size:9.5px;font-weight:750}.home-month-strip strong{display:block;font-size:13px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:650px){.home-action-grid{grid-template-columns:repeat(2,1fr)}.home-status-grid{grid-template-columns:1fr 1fr}.home-action{min-height:105px}}
+@media(max-width:430px){.home-overview-head{display:block}.home-backup-button{margin-top:13px;width:100%;justify-content:center}.home-total-grid{grid-template-columns:1fr 1fr}.home-total-card{padding:13px}.home-total-card strong{font-size:21px}.home-action-grid{gap:9px}.home-action{min-height:102px;padding:13px 11px}.home-status-grid{gap:9px}.home-month-strip{grid-template-columns:1fr 1fr}.home-month-strip>div:last-child{grid-column:1/-1}.section-title{margin-top:18px}}
+/* Slightly larger bottom task bar for easier one-handed use. */
+body{padding-bottom:122px}
+.nav{height:96px;left:8px;right:8px;bottom:7px;border-radius:28px;padding:8px 9px calc(8px + env(safe-area-inset-bottom))}
+.nav button{min-height:75px;border-radius:20px;font-size:10.5px;gap:4px}
+.nav .ico{font-size:25px}
+.toast{bottom:124px}
+.legacy-clock,#clockInModal,#clockOutModal{display:none!important}
+@media(max-width:430px){body{padding-bottom:116px}.nav{height:91px}.nav button{min-height:70px;font-size:10px}.nav .ico{font-size:24px}}

@@ -153,6 +153,33 @@ msr_shifts_v1   msr_profile_v1   msr_active_v1     msr_settings_v1
 msr_employers_v2   msr_payrolls_v3   msr_scheduled_v3   msr_debts_v3
 ```
 
+#### Record shapes
+
+| Store | Shape |
+| --- | --- |
+| `employers` | `{id, name, defaultRate, payBasis, payDay, payOffset, payrollRef, phone, notes, sites[]}`. Sites nest inside the employer: `{id, name, address, rateOverride, latitude, longitude, accuracy, capturedAt}`, where a non-null `rateOverride` beats `defaultRate` (`rateFor()`). |
+| `shifts` | Completed work: `{id, date, start, end, endDate, employerId, siteId, role, breakMin, grossMinutes, paidMinutes, rate, additional, deduction, total, earnedMonth, notes, method}`. |
+| `scheduled` | Planned work: the same fields plus `reminderMinutes` and `status: planned \| started \| completed`. |
+| `payrolls` | One row per employer × month: `{id, employerId, earnedMonth, receipts[], promises[], adjustments[], notes}`. A receipt is `{id, amount, date, note, createdAt}`; a promise is the same plus `fulfilled` and an optional `endDate` for a promised range. |
+| `debts` | Personal lending: `{id, person, direction: owed_to_me \| i_owe, title, amount, dueDate, payments[], notes, status: open \| settled, createdAt}`. |
+| `profile`, `settings`, `active` | The user, preferences (`role`, `defaultEmployerId`), and the currently-running clock (`null` when not clocked in). |
+
+Two conventions matter when working with this data:
+
+- **`earnedMonth` is the pivot, not `date`.** A shift is filed under the month it was *earned*, and
+  `payrolls` is keyed the same way, so `(employerId, earnedMonth)` is what joins work to money.
+  From there `expectedPayDate()` derives the due date from `payOffset` and `payDay` (clamped to the
+  target month's length), and `receipts` / `promises` record what actually arrived.
+- **`shifts` and `scheduled` denormalise their employer.** They carry `employerName`, `location`,
+  `siteAddress` and the site's coordinates alongside the ids, so a historical record still reads
+  correctly after an employer or site is renamed or deleted. `employerName()` prefers the stored
+  copy and falls back to a live lookup.
+
+The duplicate declarations described above left a schema migration behind in real user data:
+`getPayroll` at line 102 creates payroll rows *without* `adjustments`, the live one at line 205
+creates them *with* it, and the live one repairs old rows on read
+(`if(p&&!Array.isArray(p.adjustments))p.adjustments=[]`). Keep that guard.
+
 Document *files* live in IndexedDB (`MyShiftRecordDocumentsV4`) rather than `localStorage`.
 Native-side state is the `msr_native` `SharedPreferences` file (`backup_uri`, `backup_days`,
 `next_auto_backup`, `last_auto_backup`) plus the app-private `latest_full_backup.json`.
